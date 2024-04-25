@@ -1,0 +1,145 @@
+/* Product container styles */
+.product-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 1200px;
+    padding: 20px;
+  }
+  
+  /* Product image styles */
+  .product-image img {
+    height: 400px;
+    flex: 0 0 auto;
+  }
+  .product-details h2,
+.product-details p {
+    position: relative;
+    left: 50px;
+    margin-bottom: 10px;
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+  
+  /* Price styles */
+  .price {
+    font-weight: bold;
+    color: #0b8307;
+  }
+  
+  /* Material styles */
+  .material {
+    font-style: italic;
+    color: #555;
+  }
+  
+  /* Description styles */
+  .description {
+    margin-bottom: 20px;
+  }
+  
+  /* Buttons styles */
+  .buttons {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    left: 50px;
+  }
+  .add-to-cart
+  {
+    background-color: rgba(30, 207, 118, 0.795);
+  }
+  
+  .add-to-cart,
+  .back {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; 
+  }
+.back{ 
+    background-color: #700cc2;
+}
+.increment-btn:hover,  
+.add-to-cart:hover
+{
+    background-color: rgb(14, 233, 14);
+}
+.decrement-btn:hover,
+.back:hover {
+  background-color: #ee0a0a; 
+}
+.button-container {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.decrement-btn,
+.increment-btn {
+  background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.decrement-btn {
+  border-right: 1px solid #ccc;
+}
+
+.increment-btn {
+  border-left: 1px solid #ccc;
+}
+
+.quantity {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+/* rating */
+.rating {
+  display: inline-block;
+  position: relative;
+  left: 50px;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 1px;
+  cursor: pointer;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Full_Star_White.svg/640px-Full_Star_White.svg.png'); /* Replace 'empty-star.png' with your empty star image */
+  background-size: cover;
+  transition: transform 0.2s ease;
+}
+
+.rating input:checked ~ label {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Full_Star_Gold.svg/640px-Full_Star_Gold.svg.png'); /* Replace 'filled-star.png' with your filled star image */
+  animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+  0% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+  100% {
+      transform: scale(1);
+  }
+}

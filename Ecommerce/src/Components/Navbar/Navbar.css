@@ -1,0 +1,197 @@
+body, ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  border: none;
+  border-radius: 25px;
+  height: 25px;
+  width: 270px;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right:10px ;
+}
+
+.search-container:hover {
+  border-radius: 25px;
+  box-shadow: 0 0 10px #fff, 0 0 10px #fff;
+}
+
+/* Dropdown button */
+.dropdown-btn {
+  background: transparent;
+  color: white;
+  padding: 0px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: chartreuse;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffc107; /* Yellow color on hover */
+}
+
+/* Three-bar icon */
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  position: relative;
+  width: 30px;
+  height: 25px;
+}
+
+.bar {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.bar:nth-child(1) {
+  top: 0;
+}
+
+.bar:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bar:nth-child(3) {
+  bottom: 0;
+}
+
+/* Responsive Navbar */
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbar-brand {
+    order: 1;
+  }
+
+  .nav-toggle-label {
+    display: block;
+    order: 4;
+  }
+
+  .navbar-nav,
+  .dropdown,
+  .search-container {
+    display: none;
+  }
+
+  .navbar-nav:first-of-type {
+    order: 2;
+    display: flex;
+  }
+
+  .navbar-nav:first-of-type .nav-item:not(:first-child) {
+    display: none;
+  }
+
+  .search-container {
+    order: 3;
+    display: block;
+  }
+
+  #nav-toggle:checked ~ .navbar-nav,
+  #nav-toggle:checked ~ .dropdown,
+  #nav-toggle:checked ~ .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #nav-toggle:checked ~ .nav-toggle-label .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
