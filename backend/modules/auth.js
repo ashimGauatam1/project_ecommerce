@@ -30,7 +30,7 @@ router.post('/createuser',[
             user.save();
             res.send(user);
         }
-        return res.status(400).json({ "error":"email already exists" });
+        // return res.status(400).json({ "error":"email already exists" });
     } catch (error) {
         console.error('Error occurred:', error);
         return res.status(500).json({ error: 'Internal server error' });

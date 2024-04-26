@@ -14,18 +14,16 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
       const response = await axios.post("http://localhost:8080/auth/createuser", user);
-      console.log(response);
+      // console.log(response);
       if (response.status === 200) {
-        navigate("/");
+        navigate("/login");
       }
-    } catch (error) {
-      console.error("Error:", error);
+     
+    else {
       alert("Error while registering");
     }
   }
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -50,12 +48,9 @@ const Signup = () => {
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" className="input" onChange={handleChange} placeholder="Enter your password" required />
+            <input type="password" id="password" name="password" className="input" onChange={handleChange} placeholder="Enter your password minimum 5 characters" required />
           </div>
-          <div className="form-group">
-            <label htmlFor="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirmPassword" className="input" onChange={handleChange} placeholder="Confirm your password" required />
-          </div>
+     
           <button type="submit" className="btn">Register</button>
         </form>
       </div>

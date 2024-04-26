@@ -10,7 +10,6 @@ app.use(cros());
 
 app.use(express.json());
 app.use('/auth',require('./modules/auth'));
-app.use('/verify',require('./modules/verify'));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

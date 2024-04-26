@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import '../Cart/Cart.css';
 import axios from 'axios';
-import { useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 const Cart = () => {
     const [data,Setdata]=useState([]);
     const location = useLocation();
@@ -40,7 +40,14 @@ const Cart = () => {
     <button className="btn-remove">Remove</button>
     </li>
   </div>
-</div>    
+</div>
+<div className='total'>
+    <p ><div style={{fontWeight:'bold',fontSize:'20px',textAlign:'center',marginBottom:'20px'}}>Order Summary</div>
+    <p>Sub total :      ${data.price*count}</p>
+    <p>Delivery Charge:     According to your Loaction</p>
+    <Link to={"/checkout"} className='btn-checkout'>Checkout</Link>
+</p>
+</div>
     </div>
     </div>
   )

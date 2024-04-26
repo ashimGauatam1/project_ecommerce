@@ -61,7 +61,7 @@ body {
   .btn-remove:hover{
     background-color: rgb(241, 3, 35);
   }
-  .btn-buy,.btn-remove {
+  .btn-buy,.btn-remove,.btn-checkout {
     width: 100px;
     margin-left: 10px ;
     padding: 10px 20px;
@@ -75,4 +75,25 @@ body {
   .btn:hover {
     background-color: #45a049;
   }
-  
+ .btn-checkout{
+  position: relative;
+  top: 20px;
+  background-color: #f0960f;
+ }  
+.btn-checkout:hover{
+  background-color: #061efa;
+}
+
+.total{
+  display: flex;
+  height: 250px;
+  width: 340px;
+  justify-content: center;
+  border: 3px solid white;
+  box-shadow: 0 10px 10px rgb(233, 196, 196);
+  position: absolute;
+  top: 120px;
+  right: 200px;
+  padding: 10px 20px 10px 20px;
+
+}

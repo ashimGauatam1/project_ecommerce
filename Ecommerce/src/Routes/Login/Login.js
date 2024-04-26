@@ -15,7 +15,7 @@ const Login = () => {
     try {
         const response = await axios.post("http://localhost:8080/auth/login", user);
         if (response.status == 200) {
-            navigate("/signup")
+            navigate("/")
             
         } else {
             console.log(response.data.error);
