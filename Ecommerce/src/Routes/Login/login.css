@@ -1,26 +1,30 @@
+
 .container {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background: url("https://img.freepik.com/free-vector/realistic-technology-particle-background_23-2148409680.jpg?w=740&t=st=1714134988~exp=1714135588~hmac=71abb1065af2556efcbfc7b5663013acc965bd8f044ee222c6077c86fa208d98");
   }
   
   .login-form {
 	width: 90%; /* Adjust width as needed */
 	max-width: 400px; /* Set maximum width */
 	padding: 20px;
-	background-color: #f9f9f9;
+	background-color: transparent;
 	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   }
   
   .login-form h2 {
 	margin-bottom: 20px;
 	text-align: center;
+	color: white;
   }
   
   .form-group {
 	margin-bottom: 20px;
+	color: white;
   }
   
   label {
@@ -51,7 +55,7 @@
   }
   
   button:hover {
-	background-color: #0056b3;
+	background-color: #0be4a3;
   }
   
   /* Responsive styles */

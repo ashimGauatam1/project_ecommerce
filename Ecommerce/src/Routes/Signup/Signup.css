@@ -3,7 +3,8 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    /* background-color: #fc0707; */
+  
   }
   
   .container {
@@ -11,10 +12,11 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: url('https://img.freepik.com/free-vector/gradient-geometric-shapes-dark-background_23-2148423542.jpg?w=740&t=st=1714135470~exp=1714136070~hmac=08b4673ffb89ce920291c8de97001b5223790475cfbabb8269ed9447bd976c01');
   }
   
   .form {
-    background-color: #fff;
+    background-color: transparent;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -25,6 +27,7 @@ body, html {
   .form__title {
     text-align: center;
     margin-bottom: 20px;
+    color: white;
   }
   
   .form-group {

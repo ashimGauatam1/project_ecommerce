@@ -76,7 +76,7 @@ const SingleProduct = () => {
   <span class="quantity">{count}</span>
   <button class="increment-btn" onClick={click}>+</button>
 </div>
-      <Link style={{"textDecoration":"none" }} to={"/add_cart"} className="add-to-cart">Add to Cart</Link>
+      <Link style={{"textDecoration":"none" }} to={`/add_cart/${data.id}?count=${count}` }className="add-to-cart">Add to Cart</Link>
       <Link className="back" style={{"textDecoration":"none" }} to={"/"}>Back</Link>
     </div>
 </div>

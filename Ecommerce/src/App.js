@@ -11,6 +11,7 @@ import Men from './Routes/Category/Men';
 import Women from './Routes/Category/Women';
 import Jwelery from './Routes/Category/Jwellery';
 import Electronics from './Routes/Category/Electronics';
+import Cart from './Routes/Cart/Cart';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
       <Route path='/women' element={<Women/>}/>
       <Route path='/jwelery' element={<Jwelery/>}/>
       <Route path='/electronics' element={<Electronics/>}/>
+      <Route path='/add_cart/:id' element={<Cart/>}/>
     </Routes>
     
   <Footer/>

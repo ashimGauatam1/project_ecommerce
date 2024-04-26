@@ -4,13 +4,13 @@ import axios from'axios';
 import Navbar from '../Components/Navbar/Navbar'
 import Crousel from '../Components/Crousel/Crousel';
 import Card from '../Components/Card/Card';
+import Search from '../Components/Search/Search';
 const Home = () => {
   const [data,Setdata]=useState([])
   const fetchdata=async()=>{
     const response = await axios.get("https://fakestoreapi.com/products");
     if (response.status==200) {
       Setdata(response.data)
-      console.log(response.data);
     } else {
       alert("error");
     }
@@ -19,8 +19,8 @@ const Home = () => {
     fetchdata();
   },[])
   return (
-    <div>
-        <Navbar/>
+    <div style={{background:'#6b73e0'}}>
+        <Navbar/><Search/>
         <Crousel/>
     <h2 style={{textAlign:'center',marginTop:'510px' }}>Our Products</h2>
     <div className="card-contain">
