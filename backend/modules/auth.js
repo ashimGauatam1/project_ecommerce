@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const router=express.Router();
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
-
+const nodmailer=require('nodemailer');
 const JWT_SCRT="ashim$gautam";
 
 // for creating user
@@ -20,22 +20,47 @@ router.post('/createuser',[
         }  
         
         const emails=await User.findOne({email:req.body.email});
-        console.log(emails);
-        if(!emails)
+        if(emails)
         {
-            const user=User(req.body);
-            const salt =await bcrypt.genSalt(10);
-            const newpass=await bcrypt.hash(user.password,salt);
-            user.password=newpass;
-            user.save();
-            res.send(user);
+            return res.status(400).json({ "error":"email already exists" });
         }
-        // return res.status(400).json({ "error":"email already exists" });
+        const user=User(req.body);
+        const salt =await bcrypt.genSalt(10);
+        const newpass=await bcrypt.hash(user.password,salt);
+        user.password=newpass;
+        const otp=Math.floor(Math.random()*900000+100000); //otp
+        console.log(otp);
+        const newuser=new User({name:req.body.name,email:req.body.email,password:req.body.password,otp})
+        // user.save();
+        // res.send(newuser);
+        const transporter= nodmailer.createTransport()={
+            server:'gmail',
+            auth:{
+                user:'ashimgautam00@gmail.com',
+                pass:'oycs eozb lvbf hnah',
+            }
+        }
+        const receiver={
+            from:'ashimgautam01@gmail.com',
+            to:User.email,
+            subject:`hello ${User.name}`,
+            text:`Thank you for registering with us here is your otp to verify your account :- ${otp}`
+        }
+        transporter.sendmail(receiver,(error,info)=>{
+            if(error){
+                console.log(error);
+            }
+            else{
+                console.log("email sent successfully");
+            }
+        })
     } catch (error) {
         console.error('Error occurred:', error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 })
+
+
 // for login
 router.post('/login',
     body('email',"enter a valid email").isEmail(),
