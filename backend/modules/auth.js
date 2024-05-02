@@ -4,8 +4,9 @@ const { body, validationResult } = require('express-validator');
 const router=express.Router();
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
-const nodmailer=require('nodemailer');
+const nodemailer=require('nodemailer');
 const JWT_SCRT="ashim$gautam";
+
 
 // for creating user
 router.post('/createuser',[
@@ -28,25 +29,29 @@ router.post('/createuser',[
         const salt =await bcrypt.genSalt(10);
         const newpass=await bcrypt.hash(user.password,salt);
         user.password=newpass;
-        const otp=Math.floor(Math.random()*900000+100000); //otp
-        console.log(otp);
-        const newuser=new User({name:req.body.name,email:req.body.email,password:req.body.password,otp})
+        
+        const otp = Math.floor(Math.random() * 900000) + 100000;   // otp generate
+              // otp can be obtained in console
+        const newuser=await User({ name:req.body.name , email:req.body.email,password:newpass,otp:otp});  // main code to send otp to database
+        //   res.send(newuser);
+            //   console.log(newuser.otp);
         // user.save();
+        console.log(otp);
         // res.send(newuser);
-        const transporter= nodmailer.createTransport()={
-            server:'gmail',
+        const transporter= nodemailer.createTransport({
+            service:'Gmail',
             auth:{
                 user:'ashimgautam00@gmail.com',
                 pass:'oycs eozb lvbf hnah',
             }
-        }
+        })
         const receiver={
-            from:'ashimgautam01@gmail.com',
-            to:User.email,
-            subject:`hello ${User.name}`,
-            text:`Thank you for registering with us here is your otp to verify your account :- ${otp}`
+            from:'ashimgautam00@gmail.com',
+            to:req.body.email,
+            subject:`hello ${req.body.name}`,
+            text:`Thank you ${req.body.name} for registering with us here is your otp to verify your account :- ${otp}`
         }
-        transporter.sendmail(receiver,(error,info)=>{
+        transporter.sendMail(receiver,(error,info)=>{
             if(error){
                 console.log(error);
             }
@@ -54,13 +59,25 @@ router.post('/createuser',[
                 console.log("email sent successfully");
             }
         })
+        res.send(newuser);
     } catch (error) {
         console.error('Error occurred:', error);
         return res.status(500).json({ error: 'Internal server error' });
     }
 })
-
-
+router.post('/verify',
+async (req,res)=>{
+    const lotp = await User.findOne({ email: req.body.email,otp:req.body.otp });
+  const user_otp = req.body.otp; 
+  console.log(lotp);
+    console.log(user_otp);
+    // Compare user provided OTP with the one stored in database
+    if (user_otp && lotp && user_otp === lotp) {
+        res.send({"OTP verified successfully":user_otp});
+    } else {
+        res.status(400).send({"Invalid OTP":user_otp});
+    }
+});
 // for login
 router.post('/login',
     body('email',"enter a valid email").isEmail(),
