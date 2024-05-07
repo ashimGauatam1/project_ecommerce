@@ -1,11 +1,9 @@
 import React from 'react';
 import './About.css';
-import Navbar from '../../Components/Navbar/Navbar';
 import image from './image.jpeg';
 const About = () => {
   return (
     <div>
-        <Navbar/>
         <div className='about'>
         
       <div className="container">

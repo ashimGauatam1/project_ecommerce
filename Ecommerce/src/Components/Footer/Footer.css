@@ -1,4 +1,4 @@
-/* Importing Google font - Open Sans */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -8,10 +8,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 .footer {
-    position: relative; /* Set position to fixed */
-    bottom: 0; /* Position at the bottom of the viewport */
+    position: relative;
+    bottom: 0;
     left: 0;
-    width: 100%; /* Full width of the viewport */
+    width: 100%; 
     background: #10182F;
     border-radius: 6px;
   }

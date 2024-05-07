@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
 import Card from '../../Components/Card/Card';
 
@@ -20,7 +19,6 @@ const Men = () => {
   },[])
   return (
     <div>
-      <Navbar/>
       <h2 style={{textAlign:'center',marginTop:'10px' }}>Our Products</h2>
     <div className="card-contain">
   {

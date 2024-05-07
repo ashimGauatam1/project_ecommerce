@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import axios from'axios';
-import Navbar from '../Components/Navbar/Navbar'
 import Crousel from '../Components/Crousel/Crousel';
 import Card from '../Components/Card/Card';
 import Search from '../Components/Search/Search';
@@ -28,7 +27,6 @@ const Home = () => {
 
   return (
     <div style={{ background: '#6b73e0' }}>
-    <Navbar />
     <Search />
     {loading ? (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>

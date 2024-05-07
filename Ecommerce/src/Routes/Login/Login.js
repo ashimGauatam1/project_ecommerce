@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './login.css';
-import Navbar from '../../Components/Navbar/Navbar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +34,6 @@ const Login = () => {
   }
   return (
     <div>
-      <Navbar/>
       <div className="container">
       <form className="login-form" onSubmit={handlesubmit}>
         <h2>Login</h2>
