@@ -32,11 +32,6 @@ router.post('/createuser',[
         const otp = Math.floor(Math.random() * 900000) + 100000;   // otp generate
               // otp can be obtained in console
         const newuser=await User({ name:req.body.name , email:req.body.email,password:newpass,otp:otp});  // main code to send otp to database
-        //   res.send(newuser);
-        // const Otp = new otp({
-        //     uid:newuser._id,
-        //     otp:g_otp,
-        // });
         console.log(newuser.otp);
         // await Otp.save(); 
 
@@ -49,11 +44,17 @@ router.post('/createuser',[
                 pass:'oycs eozb lvbf hnah',
             }
         })
+        const emailBody = 
+            `<h2><b>Hello ${req.body.name}</h2></b>
+            <p>Thank you, ${req.body.name}, for registering with us. Please verify your account by using the OTP below:</p>
+            <p>Your OTP:<b> ${otp}</p></b>
+            <p>If you didn't request this verification, you can safely ignore this email.</p>`;
+        
         const receiver={
             from:'ashimgautam00@gmail.com',
             to:req.body.email,
-            subject:`hello <h2>${req.body.name}</h2> <br>`,
-            text:`Thank you ${req.body.name} for registering with us here is your otp to verify your account :- ${otp}`
+            subject:`Email verification`,
+            html:emailBody,    
         }
         transporter.sendMail(receiver,(error,info)=>{
             if(error){
@@ -74,11 +75,9 @@ router.post('/verify', async (req, res) => {
     try {
         // Find the user with the entered OTP
         const user = await User.findOne({ otp: req.body.enteredOtp });
-        console.log(user);
         if (!user) {
             return res.status(400).json({ message: "Invalid OTP" });
         }
-
         // OTP matches, so it's verified
         return res.json({ message: "OTP verified successfully" });
     } catch (error) {
