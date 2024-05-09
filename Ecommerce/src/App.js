@@ -14,6 +14,7 @@ import Electronics from './Routes/Category/Electronics';
 import Cart from './Routes/Cart/Cart';
 import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
+import Verify from './Routes/verification/Verify';
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -40,6 +41,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/signup" element={<Signup/>} />
+      <Route path='/verify' element={<Verify/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>

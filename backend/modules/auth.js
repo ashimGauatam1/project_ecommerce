@@ -7,7 +7,6 @@ const jwt=require('jsonwebtoken');
 const nodemailer=require('nodemailer');
 const JWT_SCRT="ashim$gautam";
 
-
 // for creating user
 router.post('/createuser',[
     body('name',"enter a valid name").isLength({min:5}),
@@ -34,9 +33,14 @@ router.post('/createuser',[
               // otp can be obtained in console
         const newuser=await User({ name:req.body.name , email:req.body.email,password:newpass,otp:otp});  // main code to send otp to database
         //   res.send(newuser);
-            //   console.log(newuser.otp);
-        // user.save();
-        console.log(otp);
+        // const Otp = new otp({
+        //     uid:newuser._id,
+        //     otp:g_otp,
+        // });
+        console.log(newuser.otp);
+        // await Otp.save(); 
+
+        newuser.save();
         // res.send(newuser);
         const transporter= nodemailer.createTransport({
             service:'Gmail',
@@ -48,7 +52,7 @@ router.post('/createuser',[
         const receiver={
             from:'ashimgautam00@gmail.com',
             to:req.body.email,
-            subject:`hello ${req.body.name}`,
+            subject:`hello <h2>${req.body.name}</h2> <br>`,
             text:`Thank you ${req.body.name} for registering with us here is your otp to verify your account :- ${otp}`
         }
         transporter.sendMail(receiver,(error,info)=>{
@@ -65,19 +69,26 @@ router.post('/createuser',[
         return res.status(500).json({ error: 'Internal server error' });
     }
 })
-router.post('/verify',
-async (req,res)=>{
-    const lotp = await User.findOne({ email: req.body.email,otp:req.body.otp });
-  const user_otp = req.body.otp; 
-  console.log(lotp);
-    console.log(user_otp);
-    // Compare user provided OTP with the one stored in database
-    if (user_otp && lotp && user_otp === lotp) {
-        res.send({"OTP verified successfully":user_otp});
-    } else {
-        res.status(400).send({"Invalid OTP":user_otp});
+
+router.post('/verify', async (req, res) => {
+    try {
+        // Find the user with the entered OTP
+        const user = await User.findOne({ otp: req.body.enteredOtp });
+        console.log(user);
+        if (!user) {
+            return res.status(400).json({ message: "Invalid OTP" });
+        }
+
+        // OTP matches, so it's verified
+        return res.json({ message: "OTP verified successfully" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
+
 });
+
+
 // for login
 router.post('/login',
     body('email',"enter a valid email").isEmail(),

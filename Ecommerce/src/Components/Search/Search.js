@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Search.css'; // Import CSS file
+import './Search.css'; 
 
 const Search = () => {
   const [search, setSearch] = useState('');
@@ -45,8 +45,8 @@ const Search = () => {
                   <Link
                   to={`/singleproduct/${item.id}`}
   style={{
-    color: '#000', // Set text color to black
-    textDecoration: 'none', // Remove underline
+    color: '#000', 
+    textDecoration: 'none', 
     fontWeight: 'bold',
   }} 
   onMouseEnter={(e) => { e.target.style.backgroundColor = 'white'; }}

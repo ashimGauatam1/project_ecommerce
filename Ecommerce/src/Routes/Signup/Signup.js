@@ -16,7 +16,7 @@ const Signup = () => {
       const response = await axios.post("http://localhost:8080/auth/createuser", user);
       // console.log(response);
       if (response.status === 200) {
-        navigate("/login");
+        navigate("/verify");
       }
      
     else {
@@ -33,7 +33,7 @@ const Signup = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="scontainer">
         <form onSubmit={handleSubmit} className="form">
           <h2 className="form__title">Register</h2>
           <div className="form-group">
