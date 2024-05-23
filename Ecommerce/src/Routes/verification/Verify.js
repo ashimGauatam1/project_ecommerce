@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
  const Verify = () => {
   const navigate=useNavigate();
   const [otp,setOtp]=useState({
-    enteredOtp:'',
+    enteredOtp: '',
   })
   const handleSubmit=async(e)=>{
     e.preventDefault();
@@ -30,8 +30,8 @@ import { useNavigate } from 'react-router-dom';
       <div className="bcontainer">
         <h1>OTP Verification</h1>
         <form id="otpForm" className='form' onSubmit={handleSubmit}>
-            <label htmlFor="otpInput">Enter OTP:</label>
-            <input type="text" id="otpInput" className='vinput' name="otpInput" onChange={handlechange} maxLength={6} required/>
+            <label name="enteredOtp">Enter OTP:</label>
+            <input type="text" id="enteredOtp" className='vinput' name="enteredOtp" onChange={handlechange} maxLength={6} required/>
             <button type="submit" className='vbutton'>Verify</button>
         </form>
         <p id="message"></p>

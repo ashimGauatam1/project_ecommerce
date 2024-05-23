@@ -37,15 +37,15 @@ const Signup = () => {
         <form onSubmit={handleSubmit} className="form">
           <h2 className="form__title">Register</h2>
           <div className="form-group">
-            <label htmlFor="username">Full Name:</label>
+            <label className='label'  htmlFor="username">Full Name:</label>
             <input type="text" id="username" name="name" onChange={handleChange} className="input" placeholder="Enter your username" required />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label className='label'  htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" className="input" onChange={handleChange} placeholder="Enter your email" required />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label  className='label' htmlFor="password">Password:</label>
             <input type="password" id="password" name="password" className="input" onChange={handleChange} placeholder="Enter your password minimum 5 characters" required />
           </div>
      
