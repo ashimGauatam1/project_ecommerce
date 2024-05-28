@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Signup.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Alert from '../../Components/Alert/Alert';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -14,13 +15,12 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
       const response = await axios.post("http://localhost:8080/auth/createuser", user);
-      // console.log(response);
       if (response.status === 200) {
         navigate("/verify");
       }
      
     else {
-      alert("Error while registering");
+      <Alert type="danger" message="Error while registering"/>
     }
   }
   const handleChange = (e) => {

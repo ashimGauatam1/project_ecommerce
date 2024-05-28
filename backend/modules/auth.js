@@ -73,7 +73,6 @@ router.post('/createuser',[
 
 router.post('/verify', async (req, res) => {
     try {
-        
         const user = await User.findOne({ otp: req.body.enteredOtp });
         if (!user) {
             return res.status(400).json({ message: "Invalid OTP" });

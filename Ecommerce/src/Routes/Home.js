@@ -5,6 +5,7 @@ import Crousel from '../Components/Crousel/Crousel';
 import Card from '../Components/Card/Card';
 import Search from '../Components/Search/Search';
 import RingLoader from "react-spinners/RingLoader";
+import Alert from '../Components/Alert/Alert';
 
 const Home = () => {
   const [data,Setdata]=useState([]);
@@ -14,7 +15,7 @@ const Home = () => {
     if (response.status==200) {
       Setdata(response.data)
     } else {
-      alert("error");
+      <Alert type="danger" message="Error while fetching data"/>
     }
   }
   useEffect(()=>{

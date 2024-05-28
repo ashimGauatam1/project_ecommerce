@@ -1,9 +1,10 @@
 import React from 'react';
 import '../Cart/Cart.css';
 import {  Link } from 'react-router-dom';
+import Alert from '../../Components/Alert/Alert';
 
 const Cart = ({cart,setCart,isauthenticated}) => {
-  
+    
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter(item => item.id !== productId);
     setCart(updatedCart);
@@ -11,7 +12,7 @@ const Cart = ({cart,setCart,isauthenticated}) => {
   return (
     <div>
       {!isauthenticated?
-        <h1>helloe</h1>
+        <Alert type="danger" message="You are Not Logged In Please Login .If you are new then kindly Register "/>
       :
       <div className="cart-container">
         <h1>Your Items</h1>

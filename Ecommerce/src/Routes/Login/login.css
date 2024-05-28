@@ -8,8 +8,8 @@
   }
   
   .login-form {
-	width: 90%; /* Adjust width as needed */
-	max-width: 400px; /* Set maximum width */
+	width: 90%; 
+	max-width: 400px; 
 	padding: 20px;
 	background-color: transparent;
 	border-radius: 8px;
@@ -31,6 +31,7 @@
 	display: block;
 	margin-bottom: 5px;
 	font-weight: bold;
+	color: white;
   }
   
   input[type="email"],

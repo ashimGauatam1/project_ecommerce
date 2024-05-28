@@ -39,9 +39,10 @@ function App() {
     const handlelogin=(token)=>{
       SetauthToken(token);
     }
+    
     const handlelogout=()=>{
       SetauthToken(null);
-      
+
     }
     const isauthenticated=!!authToken;
   return (
