@@ -2,7 +2,7 @@ import React from 'react';
 import '../Cart/Cart.css';
 import {  Link } from 'react-router-dom';
 
-const Cart = ({cart,setCart}) => {
+const Cart = ({cart,setCart,isauthenticated}) => {
   
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter(item => item.id !== productId);
@@ -10,6 +10,9 @@ const Cart = ({cart,setCart}) => {
   };
   return (
     <div>
+      {!isauthenticated?
+        <h1>helloe</h1>
+      :
       <div className="cart-container">
         <h1>Your Items</h1>
         
@@ -34,6 +37,7 @@ const Cart = ({cart,setCart}) => {
           <Link to={"/checkout"} className='btn-checkout'>Checkout</Link>
         </div>
       </div>
+      }
     </div>
   );
 };

@@ -36,7 +36,7 @@ router.post('/createuser',[
         // await Otp.save(); 
 
         newuser.save();
-        // res.send(newuser);
+
         const transporter= nodemailer.createTransport({
             service:'Gmail',
             auth:{

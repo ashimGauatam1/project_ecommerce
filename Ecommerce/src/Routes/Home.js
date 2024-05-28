@@ -5,6 +5,7 @@ import Crousel from '../Components/Crousel/Crousel';
 import Card from '../Components/Card/Card';
 import Search from '../Components/Search/Search';
 import RingLoader from "react-spinners/RingLoader";
+
 const Home = () => {
   const [data,Setdata]=useState([]);
   const [loading,Setloading]=useState(true);
@@ -16,7 +17,6 @@ const Home = () => {
       alert("error");
     }
   }
-  
   useEffect(()=>{
     Setloading(true);
     setTimeout(() => {

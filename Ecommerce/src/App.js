@@ -17,6 +17,7 @@ import Navbar from './Components/Navbar/Navbar';
 import Verify from './Routes/verification/Verify';
 
 function App() {
+  const [authToken,SetauthToken]=useState(null);
   const [cart, setCart] = useState(() => {
     const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
     return savedCart;
@@ -35,14 +36,22 @@ function App() {
         setCart([...cart, productWithCount]);
       }
     }
+    const handlelogin=(token)=>{
+      SetauthToken(token);
+    }
+    const handlelogout=()=>{
+      SetauthToken(null);
+      
+    }
+    const isauthenticated=!!authToken;
   return (
     <BrowserRouter>
-    <Navbar size={cart.length}/>
+    <Navbar size={cart.length} isauthenticated={isauthenticated} handlelogout={handlelogout} />
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup/>} />
-      <Route path='/verify' element={<Verify/>}/>
-      <Route path='/login' element={<Login/>}/>
+      <Route path='/verify' element={<Verify />}/>
+      <Route path='/login' element={<Login onLogin={handlelogin} />}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/singleproduct/:id' element={<SingleProduct handleclick={handleclick}/>}/>
@@ -50,7 +59,7 @@ function App() {
       <Route path='/women' element={<Women/>}/>
       <Route path='/jwelery' element={<Jwelery/>}/>
       <Route path='/electronics' element={<Electronics/>}/>
-      <Route path='/add_cart' element={<Cart cart={cart} setCart={setCart} />}/>
+      <Route path='/add_cart' element={<Cart cart={cart} setCart={setCart} isauthenticated={isauthenticated}/>}/>
     </Routes>
     
   <Footer/>

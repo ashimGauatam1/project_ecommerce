@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.css';
-const Navbar = ({size}) => {
+const Navbar = ({size,isauthenticated,handlelogout}) => {
+
   return (
     <>
     <nav className="navbar">
@@ -16,7 +17,6 @@ const Navbar = ({size}) => {
     <div className="dropdown-content">
       <Link to={"/men"}>Men</Link>
       <Link to={"/women"}>Women</Link>
-      {/* <Link to={"/kids"}>Kids</Link> */}
       <Link to={"/jwelery"}>Jwelery</Link>
       <Link to={"/electronics"}>Electronics</Link>
     </div>
@@ -24,11 +24,23 @@ const Navbar = ({size}) => {
   <ul className="navbar-nav">
   <li className="nav-item"><Link to={"/add_cart"} className="nav-link">Cart</Link></li>
   <div className="badge">
+            {isauthenticated?
               <span>{size}</span>
+              :
+              <div className='cbadge' ></div>
+            }
             </div>
-    <li className="nav-item"><Link to={"/login"} className="nav-link">Login</Link></li>
+   </ul>
+
+   {!isauthenticated?
+    <ul className="navbar-nav">
+      <li className="nav-item"><Link to={"/login"} className="nav-link">Login</Link></li>
     <li className="nav-item"><Link to={"/signup"} className="nav-link">Sign Up</Link></li>
-  </ul>
+    </ul>
+      :
+      <li className="nav-item"><Link onClick={handlelogout} className="nav-link">Logout</Link></li>
+      }
+  
   <label htmlFor="nav-toggle" className="nav-toggle-label">
     <span className="bar"></span>
     <span className="bar"></span>

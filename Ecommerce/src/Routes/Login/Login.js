@@ -3,7 +3,7 @@ import './login.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const navigate=useNavigate();
   const [user,SetUser]=useState({
     email:'',
@@ -14,8 +14,9 @@ const Login = () => {
     try {
         const response = await axios.post("http://localhost:8080/auth/login", user);
         if (response.status == 200) {
-            navigate("/")
-            
+            const authToken=response.data.token;
+            onLogin(authToken);
+            navigate("/");
         } else {
             console.log(response.data.error);
             alert("Invalid credentials");
