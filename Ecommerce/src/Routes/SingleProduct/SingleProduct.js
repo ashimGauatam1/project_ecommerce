@@ -3,22 +3,25 @@ import {  Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Card from '../../Components/Card/Card';
 import Single from '../../Components/Single/Single';
+import Alert from '../../Components/Alert/Alert';
 
-const SingleProduct = ({handleclick}) => {
-    const [data,Setdata]=useState();
+const SingleProduct = ({handleclickdata,isauthenticated}) => {
+  const [showalert,Setalert]=useState(false);  
+  const [data,Setdata]=useState();
     const [newdata,newSetdata]=useState();
     
     let {id}=useParams();
     useEffect(()=>{
-        const fetchData=async()=>{
+ 
+      const fetchData=async()=>{
             const response=await axios.get("https://fakestoreapi.com/products/"+ id);
-            // console.log(response);
+           
             if(response.status==200)
             {
                 Setdata(response.data);
             }
             else{
-                alert("sorry error while fetching data");
+                Setalert(true);
             }
         }
         fetchData();
@@ -30,7 +33,7 @@ const SingleProduct = ({handleclick}) => {
             newSetdata(newresponse.data);
         }
         else{
-            alert("error while fetching data");
+          Setalert(true);
         }
     }
     useEffect(()=>{
@@ -38,7 +41,8 @@ const SingleProduct = ({handleclick}) => {
     },[])
     return (
     <div>
-        {data && <Single data={data} handleclick={handleclick}/>}
+      {showalert && <Alert type="warning" message="Internal Server Error" onClose={()=>Setalert(false)}/>}
+        {data && <Single data={data} handleclickdata={handleclickdata} isauthenticated={isauthenticated}/>}
 <div>
     
 <div>
@@ -48,7 +52,7 @@ const SingleProduct = ({handleclick}) => {
     newdata && newdata.map((data)=>{
       return (
         <>
-          <Card data={data}/>  
+          <Card data={data} />  
         </>
       )
     })

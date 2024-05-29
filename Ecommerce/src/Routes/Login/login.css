@@ -4,8 +4,10 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	background: url("https://img.freepik.com/free-vector/realistic-technology-particle-background_23-2148409680.jpg?w=740&t=st=1714134988~exp=1714135588~hmac=71abb1065af2556efcbfc7b5663013acc965bd8f044ee222c6077c86fa208d98");
-  }
+	margin-top: -8px;
+	background-color: #f5f5f5;	
+	
+}
   
   .login-form {
 	width: 90%; 
@@ -13,25 +15,28 @@
 	padding: 20px;
 	background-color: transparent;
 	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+	box-shadow:  0px 10px 10px rgba(32, 255, 3, 0.1),
+	0px 30px 20px rgba(10, 8, 8, 0.1),
+	0px 60px 40px rgba(10, 10, 14, 0.1),
+	0px 90px 80px rgba(0, 0, 0, 0.1);
   }
   
   .login-form h2 {
 	margin-bottom: 20px;
 	text-align: center;
-	color: white;
+	color: rgb(218, 18, 18);
   }
   
   .form-group {
 	margin-bottom: 20px;
-	color: white;
+	color: rgb(20, 17, 168);
   }
   
-  label {
+  .label {
 	display: block;
 	margin-bottom: 5px;
 	font-weight: bold;
-	color: white;
+	color: rgb(163, 11, 168);
   }
   
   input[type="email"],
@@ -42,21 +47,23 @@
 	border-radius: 5px;
 	outline: none;
   }
-  
-  button {
+  input:focus{
+	border-color: #1b8301;
+  }
+  .button {
 	width: 100%;
 	padding: 10px;
 	background-color: #007bff;
 	border: none;
 	border-radius: 5px;
-	color: #fff;
+	color: #ffffff;
 	font-weight: bold;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
   }
   
-  button:hover {
-	background-color: #0be4a3;
+  .button:hover {
+	background-color: #138609;
   }
   
   /* Responsive styles */

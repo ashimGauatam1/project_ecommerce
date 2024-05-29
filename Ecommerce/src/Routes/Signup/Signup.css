@@ -1,18 +1,21 @@
 /* Basic styles */
 
   .scontainer {
+    margin-top: -7px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url('https://img.freepik.com/free-vector/gradient-geometric-shapes-dark-background_23-2148423542.jpg?w=740&t=st=1714135470~exp=1714136070~hmac=08b4673ffb89ce920291c8de97001b5223790475cfbabb8269ed9447bd976c01');
-  }
+    background-color: #f5f5f5;}
   
   .form {
     background-color: transparent;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow:  0px 10px 10px rgba(32, 255, 3, 0.1),
+                 0px 30px 20px rgba(10, 8, 8, 0.1),
+                 0px 60px 40px rgba(10, 10, 14, 0.1),
+                 0px 90px 80px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
   }
@@ -20,7 +23,7 @@
   .form__title {
     text-align: center;
     margin-bottom: 20px;
-    color: white;
+    color: rgb(102, 136, 10);
   }
   
   .form-group {
@@ -29,7 +32,7 @@
   
   .label {
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: rgb(23, 157, 190);
   }
   
   .input {
@@ -38,7 +41,10 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+  .input:focus {
+    outline: none;
+    border-color: #0eff06;
+  }
   .btn {
     width: 100%;
     padding: 10px;

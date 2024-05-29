@@ -15,6 +15,7 @@ import Cart from './Routes/Cart/Cart';
 import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Verify from './Routes/verification/Verify';
+import Alert from './Components/Alert/Alert';
 
 function App() {
   const [authToken,SetauthToken]=useState(null);
@@ -26,11 +27,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-    const handleclick=(data, count)=>{
+    const handleclickdata=(data, count)=>{
       const isPresent = cart.some(product => product.id === data.id);
   
       if (isPresent) {
         alert("Product is already added");
+        // <Alert type="warning" message="Product is already added" />
       } else {
         const productWithCount = { ...data, quantity: count };
         setCart([...cart, productWithCount]);
@@ -55,7 +57,7 @@ function App() {
       <Route path='/login' element={<Login onLogin={handlelogin} />}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/singleproduct/:id' element={<SingleProduct handleclick={handleclick}/>}/>
+      <Route path='/singleproduct/:id' element={<SingleProduct handleclickdata={handleclickdata} isauthenticated={isauthenticated}/>}/>
       <Route path='/men' element={<Men/>}/>
       <Route path='/women' element={<Women/>}/>
       <Route path='/jwelery' element={<Jwelery/>}/>

@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import Alert from '../../Components/Alert/Alert';
 
 const Signup = () => {
+  const [showalert,Setalert]=useState(false);
+  const [message,SetMessage]=useState("");
   const navigate = useNavigate();
   const [user, setUser] = useState({
     name: '',
@@ -14,13 +16,21 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
       const response = await axios.post("http://localhost:8080/auth/createuser", user);
       if (response.status === 200) {
         navigate("/verify");
+      } 
+    } catch (error) {
+      if(error.response && error.response.status==400){
+        Setalert(true);
+        SetMessage("Email already exists try register with different email ")
+        
       }
-     
-    else {
-      <Alert type="danger" message="Error while registering"/>
+     else {
+       Setalert(true);
+       SetMessage("Internal Server Error");
+     }
     }
   }
   const handleChange = (e) => {
@@ -33,6 +43,7 @@ const Signup = () => {
 
   return (
     <div>
+      {showalert && <Alert type="danger" message={message} onClose={() => Setalert(false)} />}
       <div className="scontainer">
         <form onSubmit={handleSubmit} className="form">
           <h2 className="form__title">Register</h2>

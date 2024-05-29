@@ -38,7 +38,7 @@ import Alert from '../../Components/Alert/Alert';
   }
   return (
     <div>
-      {NoAlert &&  <Alert type="danger" message={message} />}
+      {NoAlert &&  <Alert type="danger" message={message} onClose={() => Setalert(false)} />}
       <div className="bcontainer">
         <h1>OTP Verification</h1>
         <form id="otpForm" className='form' onSubmit={handleSubmit}>
