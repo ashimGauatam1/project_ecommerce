@@ -25,6 +25,11 @@ function App() {
   });
 
   useEffect(() => {
+    const token=localStorage.getItem('authToken');
+    console.log(token);
+    if(token){
+      SetauthToken(token);
+    }
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
     const handleclickdata=(data, count)=>{
@@ -43,6 +48,7 @@ function App() {
     
     const handlelogout=()=>{
       SetauthToken(null);
+      localStorage.removeItem('authToken');
 
     }
     const isauthenticated=!!authToken;

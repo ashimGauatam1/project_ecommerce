@@ -17,6 +17,7 @@ const Login = ({onLogin}) => {
         const response = await axios.post("http://localhost:8080/auth/login", user);
         if (response.status == 200) {
             const authToken=response.data.token;
+            localStorage.setItem('authToken',authToken);
             onLogin(authToken);
             navigate("/");
         }
