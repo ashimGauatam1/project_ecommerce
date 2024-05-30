@@ -51,6 +51,9 @@ function App() {
       localStorage.removeItem('authToken');
 
     }
+    setTimeout(()=>{
+      handlelogout();
+    },6000)
     const isauthenticated=!!authToken;
   return (
     <BrowserRouter>
