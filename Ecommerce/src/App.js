@@ -32,7 +32,6 @@ function App() {
   
       if (isPresent) {
         alert("Product is already added");
-        // <Alert type="warning" message="Product is already added" />
       } else {
         const productWithCount = { ...data, quantity: count };
         setCart([...cart, productWithCount]);
