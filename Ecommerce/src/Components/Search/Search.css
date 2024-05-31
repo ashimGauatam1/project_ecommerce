@@ -25,7 +25,10 @@
 .searchInput.active input {
   border-radius: 5px 5px 0 0;
 }
-
+.searchInput:focus{
+  outline: none;
+  border-color: black;
+}
 .resultBox {
   position: absolute;
   top: 100%; 

@@ -27,7 +27,7 @@ const Home = () => {
   },[])
 
   return (
-    <div style={{ background: '#6b73e0' }}>
+    <div style={{ background: ' rgb(205, 215, 224)' }}>
     <Search />
     {loading ? (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
