@@ -1,8 +1,6 @@
-/* Search.css */
-
 
 .Search-container {
-  position: relative; /* Set position relative for absolute positioning */
+  position: relative; 
   height: 75px;
   display: flex;
   justify-content: center;
@@ -10,9 +8,8 @@
 }
 
 .searchInput {
-  position: relative; /* Set position relative for absolute positioning */
+  position: relative;
 }
-
 .searchInput input {
   height: 55px;
   width: 500px;
@@ -31,12 +28,12 @@
 
 .resultBox {
   position: absolute;
-  top: 100%; /* Position result box below search input */
+  top: 100%; 
   left: 0;
   width: 100%;
-  background-color: transparent; /* Add background color */
-  border-radius: 0 0 5px 5px; /* Add border radius to match search input */
-  max-height: 200px; /* Add max height if needed */
+  background-color: transparent; 
+  border-radius: 0 0 5px 5px; 
+  max-height: 200px; 
   overflow-y: auto;
 }
 
@@ -64,7 +61,7 @@
   /* Media Query for responsiveness */
   @media screen and (max-width: 768px) {
     .container .searchInput {
-      max-width: 90%; /* Adjusted maximum width for smaller screens */
+      max-width: 90%; 
     }
   }
   
