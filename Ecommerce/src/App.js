@@ -54,6 +54,7 @@ function App() {
     setTimeout(()=>{
       handlelogout();
     },24*60*60*1000)
+    
     const isauthenticated=!!authToken;
   return (
     <BrowserRouter>
