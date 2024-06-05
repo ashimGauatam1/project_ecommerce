@@ -42,28 +42,36 @@ const Signup = () => {
   }
 
   return (
-    <div>
+    <>
       {showalert && <Alert type="danger" message={message} onClose={() => Setalert(false)} />}
-      <div className="scontainer">
-        <form onSubmit={handleSubmit} className="form">
-          <h2 className="form__title">Register</h2>
-          <div className="form-group">
-            <label className='label'  htmlFor="username">Full Name:</label>
-            <input type="text" id="username" name="name" onChange={handleChange} className="input" placeholder="Enter your username" required />
-          </div>
-          <div className="form-group">
-            <label className='label'  htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" className="input" onChange={handleChange} placeholder="Enter your email" required />
-          </div>
-          <div className="form-group">
-            <label  className='label' htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" className="input" onChange={handleChange} placeholder="Enter your password minimum 5 characters" required />
-          </div>
-     
-          <button type="submit" className="btn">Register</button>
-        </form>
+      <div class="container">
+    <div class="image-container">
+      <div class="overlay"></div>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-container">
+        <div className="scontainer">
+          <form onSubmit={handleSubmit} className="form">
+            <h2 className="form__title">Register</h2>
+            <div className="form-group">
+              <label className='label' htmlFor="username">Full Name:</label>
+              <input type="text" id="username" name="name" onChange={handleChange} className="input" placeholder="Enter your username" required />
+            </div>
+            <div className="form-group">
+              <label className='label' htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" className="input" onChange={handleChange} placeholder="Enter your email" required />
+            </div>
+            <div className="form-group">
+              <label className='label' htmlFor="password">Password:</label>
+              <input type="password" id="password" name="password" className="input" onChange={handleChange} placeholder="Enter your password minimum 5 characters" required />
+            </div>
+            <button type="submit" className="btn">Register</button>
+          </form>
+        </div>
       </div>
     </div>
+          </div>
+</>
   )
 }
 
