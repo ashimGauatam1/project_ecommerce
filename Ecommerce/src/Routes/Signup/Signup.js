@@ -46,13 +46,14 @@ const Signup = () => {
       {showalert && <Alert type="danger" message={message} onClose={() => Setalert(false)} />}
       <div class="container">
     <div class="image-container">
+      
       <div class="overlay"></div>
     </div>
     <div class="form-wrapper">
       <div class="form-container">
         <div className="scontainer">
           <form onSubmit={handleSubmit} className="form">
-            <h2 className="form__title">Register</h2>
+            <h2 className="form__title">Register Here</h2>
             <div className="form-group">
               <label className='label' htmlFor="username">Full Name:</label>
               <input type="text" id="username" name="name" onChange={handleChange} className="input" placeholder="Enter your username" required />

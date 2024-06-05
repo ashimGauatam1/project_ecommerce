@@ -39,15 +39,26 @@ import Alert from '../../Components/Alert/Alert';
   return (
     <div>
       {NoAlert &&  <Alert type="danger" message={message} onClose={() => Setalert(false)} />}
-      <div className="bcontainer">
-        <h1>OTP Verification</h1>
-        <form id="otpForm" className='form' onSubmit={handleSubmit}>
-            <label name="enteredOtp">Enter OTP:</label>
-            <input type="text" id="enteredOtp" className='vinput' name="enteredOtp" onChange={handlechange} maxLength={6} required/>
-            <button type="submit" className='vbutton'>Verify</button>
-        </form>
-        <p id="message"></p>
+      <div class="container">
+    <div class="oimage-container">
+      <div class="overlay"></div>
     </div>
+    <div class="form-wrapper">
+      <div class="form-container">
+        <div class="form-content">
+          <div className="bcontainer">
+            <h1>OTP Verification</h1>
+            <form id="otpForm" className='form' onSubmit={handleSubmit}>
+              <label name="enteredOtp">Enter OTP:</label>
+              <input type="text" id="enteredOtp" className='vinput' name="enteredOtp" onChange={handlechange} maxLength={6} required/>
+              <button type="submit" className='vbutton'>Verify</button>
+            </form>
+            <p id="message"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
   )
 }

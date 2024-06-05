@@ -1,45 +1,106 @@
 
-.bcontainer {
-    height: 400px;
-    max-width: 400px;
-    margin: 50px auto;
-    margin: bottom 20px ;
-    padding: 20px;
+.container {
+    display: flex;
     background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    box-shadow: 0 0 0 10px rgba(133, 82, 82, 0.1);
-}
-
-h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
-
-label {
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.vinput[type="text"] {
-    width: calc(100% - 22px);
+    overflow: hidden;
+    max-width: 1500px;
+  }
+  
+  .oimage-container {
+    flex: 2;
+    background-image: url('https://img.freepik.com/free-vector/two-factor-authentication-concept-illustration_114360-5488.jpg?t=st=1717609049~exp=1717612649~hmac=d6eb6a1fdbee71cd69e3ed02a0408ef348383844fd04027d1d03302967f57e83&w=360');
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    position: relative;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .form-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    animation: slideIn 1s ease-in-out;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-content {
+    width: 100%;
+  }
+  
+  .bcontainer {
+    text-align: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .vinput {
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-button {
-    width: 100px;
-    padding: 10px;
-    background-color: #346292;
+    font-size: 16px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .vbutton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
     color: #fff;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #b2dd15;
-}
+  }
+  
+  .vbutton:hover {
+    background-color: #45a049;
+  }
