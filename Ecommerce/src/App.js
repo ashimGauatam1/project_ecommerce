@@ -57,7 +57,7 @@ function App() {
       localStorage.removeItem('authToken');
 
     }
-    // setTimeout(()=>{
+    setTimeout(()=>{
       handlelogout();
     },24*60*60*1000)
     
