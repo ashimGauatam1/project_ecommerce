@@ -16,13 +16,14 @@ import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Verify from './Routes/verification/Verify';
 import Alert from './Components/Alert/Alert';
+import axios from 'axios';
 
 function App() {
   const [authToken,SetauthToken]=useState(null);
-  const [cart, setCart] = useState(() => {
-    const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-    return savedCart;
-  });
+  const [cart, setCart] = useState({
+    user_id:"",
+    product_id:"",
+  })
 
   useEffect(() => {
     const token=localStorage.getItem('authToken');
@@ -30,19 +31,24 @@ function App() {
     if(token){
       SetauthToken(token);
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
-    const handleclickdata=(data, count)=>{
+  }, []);
+    const handleclickdata=async(data, count)=>{
       const isPresent = cart.some(product => product.id === data.id);
   
       if (isPresent) {
         alert("Product is already added");
       } else {
-        const productWithCount = { ...data, quantity: count };
-        setCart([...cart, productWithCount]);
-      }
+        const response =axios.post("http://localhost:8080/cart/cartproduct",{
+        product_id: data.id,
+        user_id: "6654a35ac3f518f66d55437d", 
+        count: count 
+    });
+          // const productWithCount = { ...data, quantity: count };
+          setCart([...cart, productWithCount]);
+        }
+      
     }
-    const handlelogin=(token)=>{
+    // const handlelogin=(token)=>{
       SetauthToken(token);
     }
     

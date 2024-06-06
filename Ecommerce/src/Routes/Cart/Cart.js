@@ -1,13 +1,19 @@
 import React from 'react';
 import '../Cart/Cart.css';
-import {  Link } from 'react-router-dom';
+import {  Link, useNavigate } from 'react-router-dom';
 import Alert from '../../Components/Alert/Alert';
+import axios from 'axios';
 
 const Cart = ({cart,setCart,isauthenticated}) => {
-    
-  const removeFromCart = (productId) => {
-    const updatedCart = cart.filter(item => item.id !== productId);
-    setCart(updatedCart);
+    const navigate=useNavigate();
+  const removeFromCart = async(productId) => {
+    const response=await axios.delete("http://localhost:8080/cart/cart/"+productId);
+    if(response.data==200){
+      navigate("/add_cart")
+    }
+    else{
+      alert("error");
+    }
   };
   return (
     <div>
