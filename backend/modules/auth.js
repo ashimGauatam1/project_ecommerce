@@ -98,7 +98,7 @@ router.post('/login',
           return res.status(400).json({ errors: result.array() });
         }  
         const user=await User.findOne({email:req.body.email});    // finding user 
-       // console.log(user);
+       console.log(user._id);
         if(!user)
         {
             return res.status(400).json({ error: 'Invalid credentials user' });            

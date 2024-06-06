@@ -10,6 +10,7 @@ app.use(cros());
 
 app.use(express.json());
 app.use('/auth',require('./modules/auth'));
+app.use('/cart',require('./modules/cart'));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
