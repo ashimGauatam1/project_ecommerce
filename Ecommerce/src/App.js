@@ -43,7 +43,7 @@ function App() {
         user_id: "6654a35ac3f518f66d55437d", 
         count: count 
     });
-          // const productWithCount = { ...data, quantity: count };
+          const productWithCount = { ...data, quantity: count };
           setCart([...cart, productWithCount]);
         }
       
