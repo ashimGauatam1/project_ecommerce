@@ -48,7 +48,7 @@ function App() {
         }
       
     }
-    // const handlelogin=(token)=>{
+    const handlelogin=(token)=>{
       SetauthToken(token);
     }
     
