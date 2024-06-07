@@ -23,6 +23,7 @@ const Single = ({data,handleclickdata,isauthenticated}) => {
       }
      const handleclick = (data,count) => {
       handleclickdata(data,count);
+      console.log(data.id);
       Setalert(true);
       SetMessage("Product added to cart");
       Settype('success');
