@@ -53,10 +53,10 @@ const Single = ({ data, isauthenticated }) => {
             count: count,
           },
         ]);
+        window.location.href = '/add_cart';
         Setalert(true);
         SetMessage("Product added to cart");
         Settype("success");
-        
       }
     }catch (error) {
       console.error("Error:", error);
