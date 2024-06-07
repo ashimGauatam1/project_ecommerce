@@ -5,7 +5,7 @@ import Card from '../../Components/Card/Card';
 import Single from '../../Components/Single/Single';
 import Alert from '../../Components/Alert/Alert';
 
-const SingleProduct = ({handleclickdata,isauthenticated}) => {
+const SingleProduct = ({isauthenticated}) => {
   const [showalert,Setalert]=useState(false);  
   const [data,Setdata]=useState();
     const [newdata,newSetdata]=useState();
@@ -42,7 +42,7 @@ const SingleProduct = ({handleclickdata,isauthenticated}) => {
     return (
     <div>
       {showalert && <Alert type="warning" message="Internal Server Error" onClose={()=>Setalert(false)}/>}
-        {data && <Single data={data} handleclickdata={handleclickdata} isauthenticated={isauthenticated}/>}
+        {data && <Single data={data}  isauthenticated={isauthenticated}/>}
 <div>
     
 <div>

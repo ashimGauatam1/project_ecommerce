@@ -6,7 +6,7 @@ const cart = require('../Schemas/cart');
 const router = express.Router();
 
 router.post('/cartproduct', async (req, res) => {
-    const { product_id, user_id } = req.body;
+    const { product_id, user_id,product_title,product_image,product_description,product_price,count } = req.body;
     try {
         const user = await User.findById(user_id);
         if (!user) {
@@ -14,15 +14,20 @@ router.post('/cartproduct', async (req, res) => {
         }        
         const newCart = new Cart({
             user: user_id,
-            product: product_id
+            product: product_id,
+            title:product_title,
+            price:product_price,
+            description:product_description,
+            image:product_image,
+            count:count
         });
-
+        console.log(newCart.title);
         await newCart.save();
 
         res.send({ message: "Product added successfully", cart: newCart });
     } catch (error) {
-        console.error(error);
-        res.status(500).send("Internal Server Error");
+        // console.error(error);
+        res.status(500).send({error});
     }
 });
 
@@ -34,10 +39,11 @@ router.get('/display',fetchuser,async(req,res)=>{
         console.error(error);
         res.status(500).send("Internal Server Error");
     }
-});router.delete("/cart/:id", async (req, res) => {
+});
+router.delete("/cart/:id", async (req, res) => {
     try {
         let cart = await Cart.findById(req.params.id);
-        console.log(cart)
+        // console.log(cart)
         if (!cart) {
             return res.status(404).send("Cart not found");
         }

@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import '../Single/Single.css'
 import { Link } from 'react-router-dom';
 import Alert from '../Alert/Alert';
+import axios from 'axios';
+import SingleProduct from '../../Routes/SingleProduct/SingleProduct';
 
-const Single = ({data,handleclickdata,isauthenticated}) => {
+const Single = ({data,isauthenticated}) => {
     const [showalert,Setalert]=useState(false);
     const [message,SetMessage]=useState("");  
     const [type,Settype]=useState('warning');
     const [count,setCount]=useState(1);
+    const [cart, setCart] = useState([]);
+    // const [userid,Setsetuser]=useState();
+    const user=localStorage.getItem('userid');
+  
     const click=()=>{
         setCount(count+1);
       }
@@ -21,13 +27,37 @@ const Single = ({data,handleclickdata,isauthenticated}) => {
         }
         setCount(count-1);
       }
-     const handleclick = (data,count) => {
-      handleclickdata(data,count);
-      console.log(data.id);
-      Setalert(true);
-      SetMessage("Product added to cart");
-      Settype('success');
-    };
+      const handleclick = async (data, count, user) => {
+        try {
+          const response = await axios.post("http://localhost:8080/cart/cartproduct", {
+            user_id: user,
+            product_id: data.id,
+            product_title: data.title,
+            product_price: data.price,
+            product_description: data.description,
+            product_image: data.image,
+            count: count
+          });
+      
+          if (response.status === 200) {
+            setCart([...cart, {
+              user: user,
+              product: data.id,
+              title: data.title,
+              price: data.price,
+              description: data.description,
+              image: data.image,
+              count: count
+            }]);
+            Setalert(true);
+            SetMessage("Product added to cart");
+            Settype('success');
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+      
   return (
     <div>
       {showalert && <Alert type={type} message={message} onClose={()=>Setalert(false)}/>}
@@ -58,7 +88,7 @@ const Single = ({data,handleclickdata,isauthenticated}) => {
   <button className="increment-btn" onClick={click}>+</button>
 </div>
 {isauthenticated?
-      <Link onClick={()=>handleclick(data,count)} style={{"textDecoration":"none" }} className="add-to-cart">Add to Cart</Link>
+      <Link onClick={()=>handleclick(data,count,user)} style={{"textDecoration":"none" }} className="add-to-cart">Add to Cart</Link>
   :
         <Alert type='warning' message="Please login to add to cart" onClose={()=>Setalert(false)}/> 
     }

@@ -15,29 +15,21 @@ import Cart from './Routes/Cart/Cart';
 import { useEffect, useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import Verify from './Routes/verification/Verify';
-import Alert from './Components/Alert/Alert';
-import axios from 'axios';
+
 
 function App() {
   const [authToken,SetauthToken]=useState(null);
-  const [cart, setCart] = useState([]);
-
+  const [size,Setsize]=useState(0);
   useEffect(() => {
     const token=localStorage.getItem('authToken');
-    console.log(token);
+    // console.log(token);
     if(token){
       SetauthToken(token);
     }
   }, []);
-  const handleclickdata = async (data, count) => {
-    const isPresent = cart.some((product) => product.id === data.id);
-    if (isPresent) {
-      alert("Product is already added");
-    } else {
-      const productWithCount = { ...data, quantity: count };
-      setCart([...cart, productWithCount]);
-    }
-  };
+  const handlesize=(length)=>{
+    Setsize(length);
+  }
   const handlelogin=(token)=>{
     SetauthToken(token);
   }
@@ -53,7 +45,7 @@ function App() {
     const isauthenticated=!!authToken;
   return (
     <BrowserRouter>
-    <Navbar size={cart.length} isauthenticated={isauthenticated} handlelogout={handlelogout} />
+    <Navbar size={size} isauthenticated={isauthenticated} handlelogout={handlelogout} />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Signup/>} />
@@ -61,12 +53,12 @@ function App() {
       <Route path='/login' element={<Login onLogin={handlelogin} />}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/contact' element={<Contact/>}/>
-      <Route path='/singleproduct/:id' element={<SingleProduct handleclickdata={handleclickdata} isauthenticated={isauthenticated}/>}/>
+      <Route path='/singleproduct/:id' element={<SingleProduct isauthenticated={isauthenticated}/>}/>
       <Route path='/men' element={<Men/>}/>
       <Route path='/women' element={<Women/>}/>
       <Route path='/jwelery' element={<Jwelery/>}/>
       <Route path='/electronics' element={<Electronics/>}/>
-      <Route path='/add_cart' element={<Cart cart={cart} setCart={setCart} isauthenticated={isauthenticated}/>}/>
+      <Route path='/add_cart' element={<Cart length={handlesize} authToken={authToken} isauthenticated={isauthenticated}/>}/>
     </Routes>
     
   <Footer/>

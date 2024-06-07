@@ -114,7 +114,7 @@ router.post('/login',
             },
         })
         const token =jwt.sign(data,JWT_SCRT);
-        res.status(200).json({ token });
+        res.status(200).json({ "token":token,"user":user.id });
     } catch (error) {
         console.error('Error occurred:', error);
         return res.status(500).json({ error: 'Internal server error' });
