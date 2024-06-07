@@ -7,7 +7,9 @@ import axios from 'axios';
 const Cart = ({length,authToken,isauthenticated}) => {
     const navigate=useNavigate();
     const [cart,Setcart]=useState([]);
-  const removeFromCart = async(productId) => {
+    let [cards,Setcards]=useState(null);
+    const [showalert,Setalert]=useState(false);
+    const removeFromCart = async(productId) => {
     console.log(productId)
     const response=await axios.delete("http://localhost:8080/cart/cart/"+productId);
     if(response.status==200){
@@ -37,12 +39,24 @@ const Cart = ({length,authToken,isauthenticated}) => {
       }
     }
     fetchcart();
-  },[authToken])
+  },[authToken]);
+  if(cart.length==0){
+   cards=null;
+  }
+ 
   return (
     <div>
       {!isauthenticated?
-        <Alert type="danger" message="You are Not Logged In Please Login .If you are new then kindly Register "/>
-      :
+        showalert && <Alert type="danger" message="You are Not Logged In Please Login .If you are new then kindly Register " onClose={() => Setalert(false)}/>
+        
+        :
+        (!cards?
+          <>
+           <Alert type="danger" message="Your cart is Empty....." onClose={() => Setalert(false)}/> 
+           <img src="https://static.vecteezy.com/system/resources/previews/008/515/488/non_2x/empty-cart-flat-illustration-concept-vector.jpg" style={{height:'529px',width:'800px',position:'relative',left:'250px',top:'-9px'}}/>
+          </>
+          :
+       <>
       <div className="cart-container">
         <h1>Your Items</h1>
         { cart.map(product => (
@@ -68,7 +82,9 @@ const Cart = ({length,authToken,isauthenticated}) => {
           <Link to={"/checkout"} className='btn-checkout'>Checkout</Link>
         </div>
       </div>
-      }
+       </>
+)      }
+      
     </div>
   );
 };
