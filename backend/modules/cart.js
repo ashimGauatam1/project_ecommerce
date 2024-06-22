@@ -16,7 +16,7 @@ router.post("/cartproduct", async (req, res) => {
     count,
   } = req.body;
   try {
-    // const user = await User.findById(user_id);
+    const user = await User.findById(user_id);
     if (!user) {
       return res.status(400).send("User not found");
     }
