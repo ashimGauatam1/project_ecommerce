@@ -5,16 +5,16 @@ const fetchuser = require("../Middleware/Fetchuser");
 const cart = require("../Schemas/cart");
 const router = express.Router();
 
-router.post("/cartproduct", async (req, res) => {
-  const {
-    product_id,
-    user_id,
-    product_title,
-    product_image,
-    product_description,
-    product_price,
-    count,
-  } = req.body;
+// router.post("/cartproduct", async (req, res) => {
+//   const {
+//     product_id,
+//     user_id,
+//     product_title,
+//     product_image,
+//     product_description,
+//     product_price,
+//     count,
+//   } = req.body;
   try {
     const user = await User.findById(user_id);
     if (!user) {
