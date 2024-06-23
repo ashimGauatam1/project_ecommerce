@@ -46,15 +46,15 @@ router.post("/cartproduct", async (req, res) => {
   }
 });
 
-// router.get("/display", fetchuser, async (req, res) => {
-//   try {
-//     const carts = await Cart.find({ user: req.user.id });
-//     res.json(carts);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
+router.get("/display", fetchuser, async (req, res) => {
+  try {
+    const carts = await Cart.find({ user: req.user.id });
+    res.json(carts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 router.delete("/cart/:id", async (req, res) => {
   try {
     let cart = await Cart.findById(req.params.id);
