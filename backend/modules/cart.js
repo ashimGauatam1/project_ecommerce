@@ -58,7 +58,7 @@ router.get("/display", fetchuser, async (req, res) => {
 router.delete("/cart/:id", async (req, res) => {
   try {
     let cart = await Cart.findById(req.params.id);
-    // console.log(cart)
+   
     if (!cart) {
       return res.status(404).send("Cart not found");
     }
