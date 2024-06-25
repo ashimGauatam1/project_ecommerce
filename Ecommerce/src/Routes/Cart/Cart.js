@@ -77,10 +77,10 @@ const Cart = ({length,authToken,isauthenticated}) => {
           { length(cart.length)}
         <div className='total'>
           <div className='text-style' >Order Summary</div>
-          <p style={{fontWeight:'bolder',marginTop:'10px',marginBottom:'20px'}}>Sub total : ${cart.reduce((total, product) => total + (product.price * product.count), 0)}</p>
+          {/* <p style={{fontWeight:'bolder',marginTop:'10px',marginBottom:'20px'}}>Sub total : ${cart.reduce((total, product) => total + (product.price * product.count), 0)}</p>
           <p>Delivery Charge: According to your Location</p>
           <Link to={"/checkout"} className='btn-checkout'>Checkout</Link>
-        </div>
+        </div> */}
       </div>
        </>
 )      }
