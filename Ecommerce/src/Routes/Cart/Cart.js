@@ -63,7 +63,7 @@ const Cart = ({length,authToken,isauthenticated}) => {
           
           <div className="cart-item" key={product.id}>
             <img src={product.image} alt={product.title} />
-            <div className="product-details">
+            {/* <div className="product-details"> */}
               <h2>{product.title}</h2>
               <p>{product.description}</p>
               <p className="price">Price: ${product.price}</p>
