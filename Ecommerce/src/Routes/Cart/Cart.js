@@ -57,7 +57,7 @@ const Cart = ({length,authToken,isauthenticated}) => {
           </>
           :
        <>
-      <div className="cart-container">
+      {/* <div className="cart-container"> */}
         <h1>Your Items</h1>
         { cart.map(product => (
           
