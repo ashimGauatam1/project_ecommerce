@@ -19,7 +19,6 @@ const Login = ({ onLogin }) => {
         user
       );
       if (response.status == 200) {
-        console.log(response.data.user);
         localStorage.setItem("userid", response.data.user);
         const authToken = response.data.token;
         localStorage.setItem("authToken", authToken);

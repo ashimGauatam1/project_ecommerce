@@ -1,14 +1,18 @@
-const mongoose=require('mongoose');
-const mongoURL="mongodb://localhost:27017/ecommerce";
+const mongoose = require('mongoose');
+const mongoURL = "mongodb+srv://ashimgautam:4Xlpsdib8NZbEqic@ashim.yw7ju.mongodb.net/?retryWrites=true&w=majority&appName=Ashimg";
 
-const mongoConnect=()=>{
+const mongoConnect = async () => {
     try {
-    mongoose.connect(mongoURL);   
-    console.log("connected to mongoDB") ;   
+        await mongoose.connect(mongoURL, {
+            connectTimeoutMS: 30000, 
+            socketTimeoutMS: 45000, 
+            dbName:"Ecommerce"
+        });
+        console.log("Connected to MongoDB");
     } 
     catch (error) {
-        console.log("error in connection")
+        console.error("Error in MongoDB connection:", error.message);
     }
-}
+};
 
-module.exports=mongoConnect;
+module.exports = mongoConnect;

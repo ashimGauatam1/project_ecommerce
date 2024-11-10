@@ -86,7 +86,7 @@ const Cart = ({length,authToken,isauthenticated}) => {
 )      }
       
     </div>
-  );z
+  );
 };
 
 export default Cart;

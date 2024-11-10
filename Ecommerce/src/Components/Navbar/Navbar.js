@@ -9,8 +9,7 @@ const Navbar = ({size,isauthenticated,handlelogout}) => {
   <div className="navbar-brand">Mero Pasal</div>
   <ul className="navbar-nav">
     <li className="nav-item"><Link to={"/"} className="nav-link">Home</Link></li>
-    <li className="nav-item"><Link to={"/about"} className="nav-link">About Us</Link></li>
-    <li className="nav-item"><Link to={"/contact"} className="nav-link">Contact Us</Link></li>
+     <li className="nav-item"><Link to={"/contact"} className="nav-link">Contact Us</Link></li>
   </ul>
   <div className="dropdown">
     <button className="dropdown-btn">Categorized</button>

@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../src/Routes/Home";
 import Signup from "./Routes/Signup/Signup";
 import Login from "./Routes/Login/Login";
-import About from "./Routes/About/About";
 import Contact from "./Routes/Contact/Contact";
 import Footer from "./Components/Footer/Footer";
 import SingleProduct from "./Routes/SingleProduct/SingleProduct";
@@ -52,7 +51,6 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/login" element={<Login onLogin={handlelogin} />} />
-        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route
           path="/singleproduct/:id"

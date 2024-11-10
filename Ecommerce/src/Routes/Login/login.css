@@ -1,104 +1,116 @@
-
 .container {
 	display: flex;
 	background-color: #fff;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
 	overflow: hidden;
-	max-width: 1500px;
-  }
-  
-  .limage-container {
-	flex: 2;
+	max-width: 1000px; 
+	margin: 50px auto;
+	flex-wrap: wrap;
+}
+
+.limage-container {
+	flex: 1.5; 
 	background-image: url('https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?t=st=1717609611~exp=1717613211~hmac=ef8b272cb5c1d75631ad9a79b6ae19e95c42a65ac4f68b399a0c8af8628a8ebc&w=360');
 	background-size: cover;
 	background-position: center;
-	min-height: 600px;
+	min-height: 500px;
 	position: relative;
-  }
-  
-  
-  @keyframes fadeIn {
-	0% {
-	  opacity: 0;
-	}
-	100% {
-	  opacity: 1;
-	}
-  }
-  
-  .form-wrapper {
+	animation: fadeIn 1s ease-in-out;
+}
+
+.form-wrapper {
 	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 40px;
-	animation: slideIn 1s ease-in-out;
-  }
-  
-  @keyframes slideIn {
-	0% {
-	  transform: translateX(100%);
-	}
-	100% {
-	  transform: translateX(0);
-	}
-  }
-  
-  .form-container {
+	padding: 40px 20px;
+	animation: slideIn 0.8s ease-in-out;
+}
+
+.form-container {
 	background-color: #fff;
-	padding: 40px;
+	padding: 40px 30px;
 	border-radius: 10px;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-	max-width: 400px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+	max-width: 600px; 
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  }
-  
-  .form-content {
+}
+
+.form-content {
 	width: 100%;
-  }
-  
-  .login-form {
+	max-width: 500px; 
+}
+
+.login-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-  }
-  
-  .form-group {
+}
+
+.form-group {
 	margin-bottom: 20px;
 	width: 100%;
-  }
-  
-  .label {
+}
+
+.label {
 	display: block;
-	font-weight: bold;
+	font-weight: 600;
 	margin-bottom: 5px;
-	color: #555;
-  }
-  
-  input {
+	color: #444;
+	font-size: 14px;
+}
+
+input {
 	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	font-size: 16px;
-  }
-  
-  .button {
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	font-size: 15px;
+	outline: none;
+	transition: border-color 0.3s ease;
+}
+
+input:focus {
+	border-color: #4CAF50;
+}
+
+.button {
 	width: 100%;
-	padding: 10px;
+	padding: 12px;
 	background-color: #4CAF50;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
+	border-radius: 6px;
 	font-size: 16px;
 	cursor: pointer;
-	transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
+	font-weight: 500;
+	transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
 	background-color: #45a049;
-  }
+	transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.container {
+		flex-direction: column;
+	}
+
+	.limage-container {
+		min-height: 300px;
+	}
+}
+
+@media (max-width: 480px) {
+	.form-container {
+		padding: 30px 20px;
+	}
+
+	.button {
+		padding: 10px;
+		font-size: 15px;
+	}
+}
