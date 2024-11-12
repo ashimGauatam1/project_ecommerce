@@ -19,10 +19,8 @@ function App() {
   const [size, Setsize] = useState(0);
   useEffect(() => {
     const token = localStorage.getItem("authToken");
-    // console.log(token);
-    if (token) {
+    console.log(token);
       SetauthToken(token);
-    }
   }, []);
   const handlesize = (length) => {
     Setsize(length);
